@@ -3,6 +3,7 @@ from models.cliente import Cliente
 from repositories.encomenda_repo import tabela_encomenda
 from repositories.cliente_repo import tabela_cliente
 from repositories.catalogo_repo import tabela_catalogo
+from repositories.admin_repo import tabela_admin
 
 from flask import Flask, render_template
 
@@ -26,3 +27,4 @@ print(cliente)
 tabela_encomenda()
 tabela_cliente()
 tabela_catalogo()
+tabela_admin()
