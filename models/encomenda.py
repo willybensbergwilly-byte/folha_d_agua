@@ -8,6 +8,16 @@ class Encomenda:
         self.quantidade = quantidade
         self.status = status
 
-    def __str__(self):
-        return f"Data do Pedido: {self.data_pedido_realizado}, Data de Retirada: {self.data_retirado}, Cliente: {self.nome_cliente}, Tipo de Pedido: {self.tipo_pedido}, Quantidade: {self.quantidade}, Status: {self.status}"
+   
+def __str__(self):
+    return (
+        f"Data do Pedido: {self.data_pedido_realizado} | "
+        f"Data de Retirada: {self.data_retirado} | "
+        f"Cliente: {self.nome_cliente} | "
+        f"Tipo de Pedido: {self.tipo_pedido} | "
+        f"Quantidade: {self.quantidade} | "
+        f"Status: {self.status}"
+    )
+
+
         
