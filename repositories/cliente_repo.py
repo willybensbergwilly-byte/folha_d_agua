@@ -11,6 +11,7 @@ def tabela_cliente():
             email VARCHAR(150) NOT NULL UNIQUE,
             senha_hash VARCHAR(255) NOT NULL,
             telefone VARCHAR(16) NOT NULL
+           
         )
     """
     

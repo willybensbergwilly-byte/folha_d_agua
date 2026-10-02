@@ -10,7 +10,7 @@ def tabela_encomenda():
             data_pedido_realizado DATE NOT NULL,
             data_retirado DATE NOT NULL,
             nome_cliente VARCHAR(255) NOT NULL,
-            tipo_pedido VARCHAR(255) NOT NULL,
+            tipo_produto VARCHAR(255) NOT NULL,
             quantidade INT NOT NULL,
             status VARCHAR(50) NOT NULL
         )

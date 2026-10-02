@@ -11,3 +11,4 @@ print(cliente)
 
 tabela_encomenda()
 tabela_cliente()
+tabela_catalogo()
