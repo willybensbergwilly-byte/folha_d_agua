@@ -1,3 +1,7 @@
+from models.buque import Buque
+from models.arranjo import Arranjo
+from models.estoque import Estoque
+
 from models.catalogo.catalogo import Catalogo
 from models.cliente import Cliente
 from repositories.encomenda_repo import tabela_encomenda
@@ -18,11 +22,25 @@ def inicio():
 if __name__ == "__main__":
     app.run(debug=True)
 
-catalogo = Catalogo("Rosas", "Rosas Vermelhas", 10.00, 5, 100)
+catalogo = Catalogo(1,"Buque", "Rosas Vermelhas", 100.00, 100)
 print(catalogo)
 
-cliente = Cliente(2, "Nexus@7315", "Maria Oliveira", "maria.oliveira@gmail.com", 4199887821)
+catalogo1 = Catalogo(2,"Buque", "Crisântemos", 99.99, 200)
+
+cliente = Cliente(2, "Nexus@7315", "Maria Oliveira", "Maria1029910", "maria.oliveira@gmail.com", 4199887821)
 print(cliente)
+
+buque = Buque("Rosas Vermelhas", 45.00)
+arranjo = Arranjo("Lírios Brancos", 65.00)
+
+estoque_buque = Estoque(buque, 20)
+estoque_arranjo = Estoque(arranjo, 15)
+
+print(buque)
+print(arranjo)
+
+print(estoque_buque)
+print(estoque_arranjo)
 
 tabela_encomenda()
 tabela_cliente()
