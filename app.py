@@ -1,15 +1,17 @@
 from models.buque import Buque
 from models.arranjo import Arranjo
 from models.estoque import Estoque
-
 from models.catalogo.catalogo import Catalogo
 from models.cliente import Cliente
+
 from repositories.encomenda_repo import tabela_encomenda
 from repositories.cliente_repo import tabela_cliente
 from repositories.catalogo_repo import tabela_catalogo
 from repositories.admin_repo import tabela_admin
+from repositories.catalogo_repo import cadastrar_produto
 
 from flask import Flask, render_template
+
 
 app = Flask(__name__)
 
@@ -18,16 +20,32 @@ app = Flask(__name__)
 def inicio():
     return render_template("index.html")
 
+@app.route("/admin/produtos/cadastrar")
+def cadastrar_produto_admin():
+    return render_template("admin/cadastrar_produto.html")
+    return "Produto cadastrado com sucesso!"
+
 
 if __name__ == "__main__":
     app.run(debug=True)
 
-catalogo = Catalogo(1,"Buque", "Rosas Vermelhas", 100.00, 100)
+
+catalogo = Catalogo("Buquê", "Rosas Vermelhas", 100.00)
+
 print(catalogo)
 
-catalogo1 = Catalogo(2,"Buque", "Crisântemos", 99.99, 200)
+catalogo1 = Catalogo("Buquê", "Crisântemos", 99.99)
 
-cliente = Cliente(2, "Nexus@7315", "Maria Oliveira", "Maria1029910", "maria.oliveira@gmail.com", 4199887821)
+print(catalogo1)
+
+cliente = Cliente(
+    "Nexus@7315",
+    "Maria Oliveira",
+    "Maria1029910",
+    "maria.oliveira@gmail.com",
+    4199887821
+)
+
 print(cliente)
 
 buque = Buque("Rosas Vermelhas", 45.00)
