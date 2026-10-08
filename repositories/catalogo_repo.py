@@ -40,4 +40,18 @@ def cadastrar_produto(tipo_produto, nome_flor, preco, estoque):
 
     cursor.close
     
-    
+def listar_produtos():
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    cursor.execute("""
+        SELECT id, tipo_produto, nome_flor, preco, estoque
+        FROM catalogo
+    """)
+
+    produtos = cursor.fetchall()
+
+    cursor.close()
+    conexao.close()
+
+    return produtos

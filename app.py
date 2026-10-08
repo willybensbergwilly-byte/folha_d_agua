@@ -8,7 +8,7 @@ from repositories.encomenda_repo import tabela_encomenda
 from repositories.cliente_repo import tabela_cliente
 from repositories.catalogo_repo import tabela_catalogo
 from repositories.admin_repo import tabela_admin
-from repositories.catalogo_repo import cadastrar_produto
+from repositories.catalogo_repo import cadastrar_produto, listar_produtos
 
 from flask import Flask, render_template
 
@@ -25,6 +25,10 @@ def cadastrar_produto_admin():
     return render_template("admin/cadastrar_produto.html")
     return "Produto cadastrado com sucesso!"
 
+@app.route("/admin/estoque")
+def estoque_admin():
+    produtos = listar_produtos()
+    return render_template("admin/estoque.html", produtos=produtos)
 
 if __name__ == "__main__":
     app.run(debug=True)

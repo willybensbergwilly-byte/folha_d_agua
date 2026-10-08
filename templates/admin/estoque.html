@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque - Folha D'Água</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+
+<body>
+
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="logo">
+                🌷
+                <h2>Folha D'Água</h2>
+                <span>Administrador</span>
+            </div>
+
+            <nav>
+                <a href="#">Dashboard</a>
+                <a href="#">Produtos</a>
+                <a href="#" class="ativo">Estoque</a>
+                <a href="#">Encomendas</a>
+                <a href="#">Clientes</a>
+            </nav>
+
+        </aside>
+
+        <main class="conteudo">
+
+            <header class="topo">
+                <div>
+                    <h1>Estoque</h1>
+                    <p>Visualize e gerencie o estoque dos produtos.</p>
+                </div>
+            </header>
+
+            <section class="estoque-container">
+
+                <div class="tabela-estoque">
+
+                    <div class="cabecalho-tabela">
+                        <span>Produto</span>
+                        <span>Tipo</span>
+                        <span>Preço</span>
+                        <span>Estoque</span>
+                    </div>
+
+                    {% for produto in produtos %}
+                    <div class="item-estoque">
+                        <span>{{ produto[2] }}</span>
+                        <span>{{ produto[1] }}</span>
+                        <span>R$ {{ produto[3] }}</span>
+                        <span>{{ produto[4] }} unidades</span>
+                    </div>
+                    {% endfor %}
+                </div>
+    </div>
+    </section>
+    </main>
+    </div>
+</body>
+
+</html>
