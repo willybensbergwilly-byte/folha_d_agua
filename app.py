@@ -8,9 +8,9 @@ from repositories.encomenda_repo import tabela_encomenda
 from repositories.cliente_repo import tabela_cliente
 from repositories.catalogo_repo import tabela_catalogo
 from repositories.admin_repo import tabela_admin
-from repositories.catalogo_repo import cadastrar_produto, listar_produtos
+from repositories.catalogo_repo import cadastrar_produto, listar_produtos, atualizar_estoque
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
@@ -20,15 +20,45 @@ app = Flask(__name__)
 def inicio():
     return render_template("index.html")
 
-@app.route("/admin/produtos/cadastrar")
-def cadastrar_produto_admin():
+
+@app.route("/admin/")
+def admin():
+    return render_template("admin/admin.html")
+      
+@app.route("/admin/produtos/cadastrar", methods=["GET", "POST"])
+def cadastrar_produto_admin(): 
+    if  request.method == "POST":
+        tipo_produto = request.form["tipo_produto"]
+        nome_flor = request.form["nome_flor"]
+        preco = request.form["preco"]
+        estoque = request.form["estoque"]
+
+        cadastrar_produto(
+            tipo_produto,
+            nome_flor,
+            preco,
+            estoque
+        )
+
+        return "Produto cadastrado com sucesso!"
+
     return render_template("admin/cadastrar_produto.html")
-    return "Produto cadastrado com sucesso!"
 
 @app.route("/admin/estoque")
 def estoque_admin():
     produtos = listar_produtos()
     return render_template("admin/estoque.html", produtos=produtos)
+
+@app.route("/admin/estoque/atualizar/<int:id>", methods=["POST"])
+def atualizar_estoque_admin(id):
+    estoque = request.form.get("estoque", type=int)
+
+    if estoque is None or estoque < 0:
+        return "Informe uma quantidade válida.", 400
+
+    atualizar_estoque(id, estoque)
+
+    return redirect(url_for("estoque_admin"))
 
 if __name__ == "__main__":
     app.run(debug=True)

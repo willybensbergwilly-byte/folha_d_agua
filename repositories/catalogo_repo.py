@@ -55,3 +55,22 @@ def listar_produtos():
     conexao.close()
 
     return produtos
+
+def atualizar_estoque(id, estoque):
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    cursor.execute("""
+        UPDATE catalogo
+        SET estoque = %s
+        WHERE id = %s
+    """, (estoque, id))
+
+    conexao.commit()
+
+    produto_encontrado = cursor.rowcount > 0
+
+    cursor.close()
+    conexao.close()
+
+    return produto_encontrado
